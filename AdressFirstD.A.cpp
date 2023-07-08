@@ -19,12 +19,12 @@ private:
 public:
     
      //конструктор без параметров
-      Adress():city_name_("unknown"), street_name_("unknown"), num_house_(0), num_flat_(0) {}
+     Adress() :city_name_(), street_name_(), num_house_(), num_flat_() {}
 
      //конструктор с параметрами
-      Adress(string city_name_, string street_name_, int num_house_, int num_flat_):
-          city_name_(city_name_), street_name_(street_name_), num_house_(num_house_), num_flat_(num_flat_)
-          {}
+      Adress(string city_name_, string street_name_, int num_house_, int num_flat_) :
+        city_name_(city_name_), street_name_(street_name_), num_house_(num_house_), num_flat_(num_flat_)
+       {}
         
      //вывод в файл  
       void Get_Output_Address(Adress *arr, int first) {
@@ -68,8 +68,16 @@ public:
 int main()
 {     
      
-      Adress adress("unknown", "unknown", 0, 0);      
-      adress.AcsessSetData();
-      
+    std::ifstream in("in.txt");
+    if (!in.is_open()) std::exit(0);
+    int f; in >> f;
+
+    string nc, ns; int nh, nf;
+    in >> nc >> ns >> nh >> nf;
+    Adress adress(nc, ns, nh, nf);
+    in.close();
+
+    adress.AcsessSetData();
+
     return 0;
 }
