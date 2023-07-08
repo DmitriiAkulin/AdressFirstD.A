@@ -5,7 +5,7 @@
 #include <fstream>
 
 using std::cin;
-using std::cout;
+
 using std::endl;
 using std::string;
 
@@ -15,12 +15,11 @@ private:
     string street_name_ ;
     int num_house_;
     int num_flat_ ;
-
-public:
+    //конструктор без параметров для массива
+    Adress() :city_name_(), street_name_(), num_house_(), num_flat_() {}
     
-     //конструктор без параметров
-     Adress() :city_name_(), street_name_(), num_house_(), num_flat_() {}
-
+public:
+   
      //конструктор с параметрами
       Adress(string city_name_, string street_name_, int num_house_, int num_flat_) :
         city_name_(city_name_), street_name_(street_name_), num_house_(num_house_), num_flat_(num_flat_)
