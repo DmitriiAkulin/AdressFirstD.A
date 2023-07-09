@@ -17,6 +17,19 @@ private:
     int num_flat_ ;
     //конструктор без параметров для массива
     Adress() :city_name_(), street_name_(), num_house_(), num_flat_() {}
+
+    //вывод в файл  
+    void Get_Output_Address(Adress* arr, int first) {
+        std::ofstream  out("out.txt");
+        out << first << endl;
+        for (int i = 0; i < first; i++) {
+
+            out << arr[i].city_name_ << ", " << arr[i].street_name_ << ", " << arr[i].num_house_ << ", "
+                << arr[i].num_flat_ << endl;
+        }
+
+        out.close();
+    }
     
 public:
    
@@ -25,18 +38,7 @@ public:
         city_name_(city_name_), street_name_(street_name_), num_house_(num_house_), num_flat_(num_flat_)
        {}
         
-     //вывод в файл  
-      void Get_Output_Address(Adress *arr, int first) {
-            std::ofstream  out("out.txt");            
-            out << first << endl;
-            for (int i = 0; i < first; i++) {
-               
-               out << arr[i].city_name_ << ", " << arr[i].street_name_ << ", " << arr[i].num_house_ << ", "
-               << arr[i].num_flat_ << endl;
-            }
-
-            out.close();
-      }
+     
 
       
      //доступ и запись в массив.
