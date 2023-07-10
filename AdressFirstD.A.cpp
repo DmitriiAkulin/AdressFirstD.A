@@ -18,18 +18,6 @@ private:
     //конструктор без параметров для массива
     Adress() :city_name_(), street_name_(), num_house_(), num_flat_() {}
 
-    //вывод в файл  
-    void Get_Output_Address(Adress* arr, int first) {
-        std::ofstream  out("out.txt");
-        out << first << endl;
-        for (int i = 0; i < first; i++) {
-
-            out << arr[i].city_name_ << ", " << arr[i].street_name_ << ", " << arr[i].num_house_ << ", "
-                << arr[i].num_flat_ << endl;
-        }
-
-        out.close();
-    }
     
 public:
    
@@ -42,33 +30,39 @@ public:
 
       
      //доступ и запись в массив.
-      void AcsessSetData() { 
+      void Get_Output_Address() { 
                  
                  std::ifstream in("in.txt");
                  if (!in.is_open()) std::exit(0);
                  int first; in >> first;
-                 
-                 Adress* adress_arr = new Adress[first];//создаем массив
-                 
-                 for (int i = 0; i < first; i++) {  //читаем из файла в массив
+
+                 //создаем массив
+                 Adress* adress_arr = new Adress[first];
+
+                 //читаем из файла в массив
+                 for (int i = 0; i < first; i++) {  
                           in >> adress_arr[i].city_name_;
                           in >> adress_arr[i].street_name_;
                           in >> adress_arr[i].num_house_;
                           in >> adress_arr[i].num_flat_;
                  }
+                 //вывод в файл 
+                     std::ofstream  out("out.txt");
+                     out << first << endl;
+                     for (int i = 0; i < first; i++) {
 
-                 Get_Output_Address(adress_arr, first);
-
+                         out << adress_arr[i].city_name_ << ", " << adress_arr[i].street_name_ << ", " << adress_arr[i].num_house_ << ", "
+                             << adress_arr[i].num_flat_ << endl;
+                     }
+                     out.close();              
+              
                  delete [] adress_arr;
-                 in.close();
-               
-               
-          
+                 in.close();                                 
        }
 };
 int main()
 {     
-     
+    //создаем экземпляр класса из данных файла для обращения к методам
     std::ifstream in("in.txt");
     if (!in.is_open()) std::exit(0);
     int f; in >> f;
@@ -78,7 +72,7 @@ int main()
     Adress adress(nc, ns, nh, nf);
     in.close();
 
-    adress.AcsessSetData();
+    adress.Get_Output_Address();
 
     return 0;
 }
