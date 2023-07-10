@@ -29,7 +29,7 @@ public:
      
 
       
-     //доступ и запись в массив.
+     //ввод из файла  и вывод даннных в файл
       void Get_Output_Address() { 
                  
                  std::ifstream in("in.txt");
