@@ -30,7 +30,7 @@ public:
 
       
      //ввод из файла  и вывод даннных в файл
-      void Get_Output_Address() { 
+      static void Get_Output_Address() { 
                  
                  std::ifstream in("in.txt");
                  if (!in.is_open()) std::exit(0);
@@ -62,17 +62,8 @@ public:
 };
 int main()
 {     
-    //создаем экземпляр класса из данных файла для обращения к методам
-    std::ifstream in("in.txt");
-    if (!in.is_open()) std::exit(0);
-    int f; in >> f;
-
-    string nc, ns; int nh, nf;
-    in >> nc >> ns >> nh >> nf;
-    Adress adress(nc, ns, nh, nf);
-    in.close();
-
-    adress.Get_Output_Address();
+    //вызываем статический метод ввода-вывода данных
+    Adress::Get_Output_Address();
 
     return 0;
 }
